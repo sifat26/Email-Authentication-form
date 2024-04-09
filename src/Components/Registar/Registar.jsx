@@ -3,6 +3,7 @@ import auth from "../firebaseConfig";
 import { useState } from "react";
 import { GoEye } from "react-icons/go";
 import { GoEyeClosed } from "react-icons/go";
+import { Link } from "react-router-dom";
 
 const Registar = () => {
     const [registerError,setRegisterError]=useState('')
@@ -10,10 +11,11 @@ const Registar = () => {
     const [showPassword,setShowPassword]=useState(false);
     const handleRegister=e=>{
         e.preventDefault();
+        const name=e.target.name.value;
         const email=e.target.email.value;
         const password=e.target.password.value;
         const accept=e.target.terms.checked;
-        console.log(email,password,accept);
+        console.log(name,email,password,accept);
         setRegisterError('')
         setSuccess('')
         if(password.length<6){
@@ -47,6 +49,10 @@ const Registar = () => {
             <form onSubmit={handleRegister}>
                 <input 
                 required
+                className="mb-4 w-full py-2 px-4" type="name" name="name" id="" placeholder="Your Name"/>
+                <br />
+                <input 
+                required
                 className="mb-4 w-full py-2 px-4" type="email" name="email" id="" placeholder="Your Email"/>
                 <br />
                 <div className="relative">
@@ -78,6 +84,7 @@ const Registar = () => {
                 success && 
                 <p className="text-green-700">{success}</p>
             }
+            <p>Already Have an Account? <Link to="/login">Please LogIn</Link></p>
             </div>
         </div>
     );

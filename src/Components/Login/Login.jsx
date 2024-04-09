@@ -1,6 +1,7 @@
 import { signInWithEmailAndPassword } from "firebase/auth";
 import auth from "../firebaseConfig";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   const [registerError,setRegisterError]=useState('')
@@ -49,7 +50,9 @@ const Login = () => {
           placeholder="password" className="input input-bordered" required />
           <label className="label">
             <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
+            
           </label>
+          <p>New To This Website ?<br /><Link to="/register">Please Register</Link></p>
         </div>
         <div className="form-control mt-6">
           <button className="btn btn-primary">Login</button>
@@ -63,6 +66,8 @@ const Login = () => {
                 success && 
                 <p className="text-green-700">{success}</p>
             }
+            
+
     </div>
   </div>
 </div>
